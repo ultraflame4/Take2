@@ -10,7 +10,7 @@ public class MoveShadow : MonoBehaviour
     public float distance = .35f;
 
     // Will change after networking
-    public Transform player;
+    private Transform player;
 
     
     private GameObject shadow;
