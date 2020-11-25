@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class MoveShadow : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class MoveShadow : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("If null reference object, tag player object with Player");
         player = GameObject.FindWithTag("Player").transform;
         
         ColorUtility.TryParseHtmlString(color, out shadow_color);
@@ -47,8 +49,11 @@ public class MoveShadow : MonoBehaviour
     {
         float rad = getAngleOfPlayerRelativeToSelf();
         float rx = -distance * Mathf.Cos(rad) * .5f;
-        float ry = -distance * Mathf.Sin(rad) * 1.5f;
+        if (Mathf.Abs(rx) < 0.01)
+        {
+            rx = (Random.Range(0, 1) * 2 - 1)*.01f;
 
-        shadow.transform.localPosition = new Vector3(rx,ry,0);
+        }
+        shadow.transform.localPosition = new Vector3(rx,-.5f,0);
     }
 }
