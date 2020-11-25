@@ -62,7 +62,11 @@ public class MoveShadow : MonoBehaviour
     float getAvgXpos()
     {
         float centerPoint = getXpos(transform.position);
-        return centerPoint;
+        float leftPoint = getXpos(new Vector3(transform.position.x - transform.localScale.x/2,0));
+        float rightPoint = getXpos(new Vector3(transform.position.x + transform.localScale.x/2,0));
+        
+
+        return (centerPoint + leftPoint*1.5f + rightPoint*1.5f)/3;
     }
     
     void Update()
