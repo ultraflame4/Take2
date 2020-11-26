@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 200
+  jumpForce: 300
   maxJumpTime: 100
   maxJumps: 3
   jumpBufferTime: 30

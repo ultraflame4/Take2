@@ -22,15 +22,16 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-
     }
 
     void AirTime()
     {
         // Extends jump, aka airtime
+        
+        // Check if Space is pressed down
         if (Input.GetKey(KeyCode.Space) && currentJumpTime > 0)
-        {    
+        {
+            // Check if bufferTime is up
             if (currentJumpTime < maxJumpTime-1)
             {rb.AddForce(Vector2.up * (jumpForce*.75f));}
             currentJumpTime--;
@@ -65,16 +66,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    // Note: This will allow wall jumps
     private void OnCollisionEnter2D(Collision2D other)
     {
-        resetJumps();
+        // Check if object above player
+        // prevent ceiling jumps
+        if (!(other.transform.position.y > transform.position.y + transform.localScale.y / 2))
+        {
+            resetJumps();
+        }
     }
 
     void FixedUpdate()
     {
-        
-        
-        
         float h = Input.GetAxisRaw("Horizontal");
         Vector2 movement = new Vector2(h * speed, rb.velocity.y);
         rb.velocity = movement;
@@ -91,7 +95,9 @@ public class PlayerController : MonoBehaviour
         if (currentJumps > 0)
         {
             currentJumps--;
+            
             currentJumpTime = maxJumpTime+jumpBufferTime;
+            
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
