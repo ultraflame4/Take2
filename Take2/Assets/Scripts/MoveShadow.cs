@@ -25,7 +25,9 @@ public class MoveShadow : MonoBehaviour
         
         shadow = new GameObject("shadow");
         shadow.transform.SetParent(transform);
+        
         shadow.transform.localScale=new Vector3(1,1,1);
+        shadow.layer = LayerMask.NameToLayer("shadows");
         
         SpriteRenderer spriteRender = shadow.AddComponent<SpriteRenderer>();
         spriteRender.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
@@ -36,24 +38,42 @@ public class MoveShadow : MonoBehaviour
 
     }
 
-    float getAngleOfPlayerRelativeToSelf()
+    float getAngleOfPlayerRelativeToSelf(Vector3 selfpos)
     {
         float dy = (player.position.y - transform.position.y);
-        float dx = (player.position.x - transform.position.x);
+        float dx = (player.position.x - selfpos.x);
         float rad = Mathf.Atan2(dy, dx);
 
         return rad;
     }
-    
-    void Update()
+
+
+    float getXpos(Vector3 pos)
     {
-        float rad = getAngleOfPlayerRelativeToSelf();
+        float rad = getAngleOfPlayerRelativeToSelf(pos);
         float rx = -distance * Mathf.Cos(rad) * .5f;
         if (Mathf.Abs(rx) < 0.01)
         {
             rx = (Random.Range(0, 1) * 2 - 1)*.01f;
 
         }
-        shadow.transform.localPosition = new Vector3(rx,-.5f,0);
+
+        return rx;
+    }
+
+    float getAvgXpos()
+    {
+        float centerPoint = getXpos(transform.position);
+        float leftPoint = getXpos(new Vector3(transform.position.x - transform.localScale.x/2,0));
+        float rightPoint = getXpos(new Vector3(transform.position.x + transform.localScale.x/2,0));
+        
+
+        return (centerPoint + leftPoint*1.5f + rightPoint*1.5f)/3;
+    }
+    
+    void Update()
+    {
+        
+        shadow.transform.localPosition = new Vector3(getAvgXpos(),-.5f,0);
     }
 }
