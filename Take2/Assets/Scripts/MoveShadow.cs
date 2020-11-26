@@ -25,7 +25,9 @@ public class MoveShadow : MonoBehaviour
         
         shadow = new GameObject("shadow");
         shadow.transform.SetParent(transform);
+        
         shadow.transform.localScale=new Vector3(1,1,1);
+        shadow.layer = LayerMask.NameToLayer("shadows");
         
         SpriteRenderer spriteRender = shadow.AddComponent<SpriteRenderer>();
         spriteRender.sprite = gameObject.GetComponent<SpriteRenderer>().sprite;
