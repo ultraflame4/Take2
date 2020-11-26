@@ -26,8 +26,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    void AirTime()
     {
         // Extends jump, aka airtime
         if (Input.GetKey(KeyCode.Space) && currentJumpTime > 0)
@@ -36,12 +35,10 @@ public class PlayerController : MonoBehaviour
             {rb.AddForce(Vector2.up * (jumpForce*.75f));}
             currentJumpTime--;
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-
+    void FastFall()
+    {
         if (Input.GetKey(KeyCode.S))
         {
             
@@ -52,6 +49,18 @@ public class PlayerController : MonoBehaviour
 
             rb.AddForce(Vector2.down* (rb.gravityScale * 5),ForceMode2D.Impulse);
         }
+    }
+    void Update()
+    {
+
+        AirTime();
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+
+        FastFall();
 
     }
 
