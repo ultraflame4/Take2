@@ -38,6 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        rb.AddForce(Vector2.up * jumpForce);
+        rb.AddForce(Vector2.up * jumpForce,ForceMode2D.Impulse);
     }
 }
