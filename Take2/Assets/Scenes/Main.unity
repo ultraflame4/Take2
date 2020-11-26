@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 365b285baff0846459271f7fe9335739, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  speed: 10
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 25
   jumpForce: 100
   maxJumpTime: 10
   maxJumps: 0
@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b0fecffa3f624585964b0d0eb21b18e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   OnClientConnected:
     m_PersistentCalls:
       m_Calls: []
@@ -427,15 +427,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   runInBackground: 1
   autoStartServerBuild: 1
   showDebugMessages: 0
   serverTickRate: 30
-  offlineScene:
-  onlineScene:
+  offlineScene: 
+  onlineScene: 
   transport: {fileID: 1422648988}
   networkAddress: localhost
   maxConnections: 4
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   showGUI: 1
   offsetX: 0
   offsetY: 0
