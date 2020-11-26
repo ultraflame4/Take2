@@ -287,8 +287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 200
-  maxJumpTime: 10
-  maxJumps: 0
+  maxJumpTime: 100
+  maxJumps: 3
+  jumpBufferTime: 30
 --- !u!61 &268415358
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -328,9 +329,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
